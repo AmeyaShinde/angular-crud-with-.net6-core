@@ -26,7 +26,7 @@ namespace Cards.API.Controllers
         }
 
         // Get single card
-        [HttpGet("id:guid")]
+        [HttpGet("{id:guid}")]
         [ActionName("GetCard")]
         public async Task<IActionResult> GetCard([FromRoute] Guid id)
         {
@@ -52,7 +52,7 @@ namespace Cards.API.Controllers
         }
 
         // Updating a card
-        [HttpPut("id:guid")]
+        [HttpPut("{id:guid}")]
         public async Task<IActionResult> UpdateCard([FromRoute] Guid id, [FromBody] Card card)
         {
             var existingCard = await _context.Cards.FirstOrDefaultAsync(x => x.Id == id);
@@ -71,7 +71,7 @@ namespace Cards.API.Controllers
         }
 
         // Delete a card
-        [HttpDelete("id:guid")]
+        [HttpDelete("{id:guid}")]
         public async Task<IActionResult> DeleteCard([FromRoute] Guid id)
         {
             var existingCard = await _context.Cards.FirstOrDefaultAsync(x => x.Id == id);
