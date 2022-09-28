@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Card } from './models/card.model';
 import { CardsService } from './service/cards.service';
 
 @Component({
@@ -8,6 +9,8 @@ import { CardsService } from './service/cards.service';
 })
 export class AppComponent implements OnInit {
     title = 'cards';
+
+    cards: Card[] = [];
 
     constructor(private cardsService: CardsService) {
     }
@@ -19,7 +22,7 @@ export class AppComponent implements OnInit {
     getAllCards() {
         this.cardsService.getAllCards().subscribe(
             response => {
-                console.log(response);
+                this.cards = response;
             }
         );
     }
