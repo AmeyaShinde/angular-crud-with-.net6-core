@@ -17,6 +17,10 @@ export class AppComponent implements OnInit {
     }
 
     getAllCards() {
-        this.cardsService.getAllCards();
+        this.cardsService.getAllCards().subscribe(
+            response => {
+                console.log(response);
+            }
+        );
     }
 }
