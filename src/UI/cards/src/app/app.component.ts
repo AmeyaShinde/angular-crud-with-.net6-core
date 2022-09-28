@@ -57,6 +57,10 @@ export class AppComponent implements OnInit {
             response => {
                 this.getAllCards();
             }
-        )
+        );
+    }
+
+    populateForm(card: Card) {
+        this.card = card;
     }
 }
