@@ -32,8 +32,8 @@
             </form>
         </div>
         <div class="cards-grid">
-            <div (click)="populateForm(card)" class="card-row" *ngFor="let card of cards">
-                <div class="card-row-details">
+            <div class="card-row" *ngFor="let card of cards">
+                <div class="card-row-details" (click)="populateForm(card)">
                     <span>{{ card.cardHolderName }}</span>
                     <span>{{ card.cardNumber }}</span>
                 </div>
