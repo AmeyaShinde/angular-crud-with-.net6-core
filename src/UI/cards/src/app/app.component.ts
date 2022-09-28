@@ -12,6 +12,15 @@ export class AppComponent implements OnInit {
 
     cards: Card[] = [];
 
+    card: Card = {
+        id: '',
+        cardHolderName: '',
+        cardNumber: '',
+        cvv: '',
+        expiryMonth: '',
+        expiryYear: ''
+    };
+
     constructor(private cardsService: CardsService) {
     }
 
@@ -25,5 +34,21 @@ export class AppComponent implements OnInit {
                 this.cards = response;
             }
         );
+    }
+
+    onSubmit() {
+        this.cardsService.addCard(this.card).subscribe(
+            response =>{
+                this.getAllCards();
+                this.card = {
+                    id: '',
+                    cardHolderName: '',
+                    cardNumber: '',
+                    cvv: '',
+                    expiryMonth: '',
+                    expiryYear: ''
+                }
+            }
+        )
     }
 }
